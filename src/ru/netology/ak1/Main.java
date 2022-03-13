@@ -11,64 +11,46 @@ public class Main {
 
         StringBuilder sb = new StringBuilder();
 
-        File dir = new File("C:/Games/src");
-        if (dir.mkdir())
-            sb.append("Директория src в папке Games успешно создана");
-        sb.append("\n");
-        File dir2 = new File("C:/Games/res");
-        if (dir2.mkdir())
-            sb.append("Директория res в папке Games успешно создана");
-        sb.append("\n");
-        File dir3 = new File("C:/Games/savegames");
-        if (dir3.mkdir())
-            sb.append("Директория savegames в папке Games успешно создана");
-        sb.append("\n");
-        File dir4 = new File("C:/Games/temp");
-        if (dir4.mkdir())
-            sb.append("Директория temp в папке Games успешно создана");
-        sb.append("\n");
-        File dir5 = new File("C:/Games/src/main");
-        if (dir5.mkdir())
-            sb.append("Директория main в каталоге src успешно создана");
-        sb.append("\n");
-        File dir6 = new File("C:/Games/src/test");
-        if (dir6.mkdir())
-            sb.append("Директория test в каталоге src успешно создана");
-        sb.append("\n");
+        String[] gamesNewDir = {"src", "res", "savegames", "temp"};
 
-        File Main = new File("C:/Games/src/main/Main.java");
-
-        try {
-            if (Main.createNewFile())
-                sb.append("Файл Main.java в подкаталоге main успешно создан");
+        for (int i = 0; i < gamesNewDir.length; i++) {
+            File dir = new File("C:/Games/" + gamesNewDir[i]);
+            if (dir.mkdir())
+                sb.append("Директория " + gamesNewDir[i] + " в папке Games успешно создана");
             sb.append("\n");
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
         }
 
-        File Utils = new File("C:/Games/src/main/Utils.java");
+        String[] srcNewDir = {"main", "test"};
 
-        try {
-            if (Utils.createNewFile())
-                sb.append("Файл Utils.java в подкаталоге main успешно создан");
+        for (int i = 0; i < srcNewDir.length; i++) {
+            File dir = new File("C:/Games/src/" + srcNewDir[i]);
+            if (dir.mkdir())
+                sb.append("Директория " + srcNewDir[i] + " в каталоге src успешно создана");
             sb.append("\n");
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
         }
-        File dir7 = new File("C:/Games/res/drawables");
-        if (dir7.mkdir())
-            sb.append("Директория drawables в каталоге res успешно создана");
-        sb.append("\n");
 
-        File dir8 = new File("C:/Games/res/vectors");
-        if (dir8.mkdir())
-            sb.append("Директория vectors в каталоге res успешно создана");
-        sb.append("\n");
+        String[] resNewDir = {"drawables", "vectors", "icons"};
 
-        File dir9 = new File("C:/Games/res/icons");
-        if (dir9.mkdir())
-            sb.append("Директория icons в каталоге res успешно создана");
-        sb.append("\n");
+        for (int i = 0; i < resNewDir.length; i++) {
+            File dir = new File("C:/Games/res/" + resNewDir[i]);
+            if (dir.mkdir())
+                sb.append("Директория " + resNewDir[i] + " в каталоге res успешно создана");
+            sb.append("\n");
+        }
+
+        String[] mainNewFile = {"Main.java", "Utils.java"};
+
+        for (int i = 0; i < mainNewFile.length; i++) {
+            File newFile = new File("C:/Games/src/main/" + mainNewFile[i]);
+            try {
+                if (newFile.createNewFile()) {
+                    sb.append("Файл " + mainNewFile[i] + " в подкаталоге main успешно создан");
+            sb.append("\n");
+                }
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
 
         File tempTxt = new File("C:/Games/temp/temp.txt");
 
